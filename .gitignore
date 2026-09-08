@@ -1,0 +1,12 @@
+# Build output & binaries
+build/
+bin/
+*.o
+*.out
+
+# Generated compilation database & cache
+compile_commands.json
+.cache/
+
+# VS Code settings
+.vscode/
