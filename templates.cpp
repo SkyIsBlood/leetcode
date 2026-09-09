@@ -15,10 +15,6 @@ public:
 };
 
 int main() {
-    // Fast I/O for competitive programming
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-
     Solution sol;
     vector<int> test = {2, 7, 11, 15};
     cout << "Output: " << sol.exampleMethod(test) << "\n";
