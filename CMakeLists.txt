@@ -10,8 +10,11 @@ add_compile_options(-Wall -Wextra -fsanitize=address,undefined -g)
 add_link_options(-fsanitize=address,undefined)
 
 # 1. Main target: Active problem in current/
-if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/current/problem.cpp")
-    add_executable(solve current/problem.cpp)
+file(GLOB CURRENT_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/current/*.cpp")
+
+if(CURRENT_SOURCES)
+    list(GET CURRENT_SOURCES 0 ACTIVE_CPP)
+    add_executable(solve ${ACTIVE_CPP})
 endif()
 
 # 2. Archive targets: Automatically build any file moved to completed/
