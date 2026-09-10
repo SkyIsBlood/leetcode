@@ -13,13 +13,18 @@ class Solution {
 public:
     int romanToInt(string & s) 
     { 
-        static std::unordered_map<char, int> dict = {{'I',1},{'V',5},{'X',10},{'L',50},{'C',100},{'D',500},{'M',1000}};
+        //the first way of doing it 
+        //static std::unordered_map<char, int> dict = {{'I',1},{'V',5},{'X',10},{'L',50},{'C',100},{'D',500},{'M',1000}};
 
         int result = 0;
-        for (std::size_t i = 0 ; i < s.size();i++)
+        const int l = s.size();
+        for (std::size_t i = 0 ; i < l;i++)
         {
-            int current_number = dict[s[i]]; 
-            int next_number = (i+1<s.size())?(dict[s[i+1]]):(0);
+             
+            //short current_number = dict[s[i]];//first way
+            short current_number = value(s[i]); 
+            //short next_number = (i+1<l)?(dict[s[i+1]]):(0);//first way
+            short next_number = value(s[i+1]);
             if (current_number < next_number)
             {   
                 result += next_number - current_number;
@@ -31,6 +36,20 @@ public:
             }
         } 
     return result;   
+    }
+    short value(char c) 
+    {
+        switch (c) 
+        {
+        case 'I': return 1;
+        case 'V': return 5;
+        case 'X': return 10;
+        case 'L': return 50;
+        case 'C': return 100;
+        case 'D': return 500;
+        case 'M': return 1000;
+        default:  return 0;
+        }
     }
 
 };
