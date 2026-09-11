@@ -17,9 +17,3 @@ if(CURRENT_SOURCES)
     add_executable(solve ${ACTIVE_CPP})
 endif()
 
-# 2. Archive targets: Automatically build any file moved to completed/
-file(GLOB COMPLETED_SOURCES "completed/*.cpp")
-foreach(FILE ${COMPLETED_SOURCES})
-    get_filename_component(TARGET_NAME ${FILE} NAME_WE)
-    add_executable(${TARGET_NAME} ${FILE})
-endforeach()
