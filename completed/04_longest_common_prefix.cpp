@@ -15,23 +15,20 @@ public:
         const string pivot = strs.back();
         strs.pop_back();
         if (!strs.size()) {return pivot;}
-        string lcp ="";
         for (size_t j = 0 ; j < pivot.size() ; j++)
         {
-            for (string s: strs)
+            for (const string & s: strs)
             {
-                if (pivot[j] != s[j]){return lcp;}
+                if (pivot[j] != s[j]){return pivot.substr(0,j);}
             }
-            lcp += pivot[j];
-
         }
-        return lcp;
+        return pivot ;
     }
 };
 
 int main() {
     Solution sol;
-    vector<string> test = {"","","",""};
+    vector<string> test = {"jn","jn","jn","jn"};
     cout << "Output: " << sol.longestCommonPrefix(test) << "\n";
 
     return 0;
