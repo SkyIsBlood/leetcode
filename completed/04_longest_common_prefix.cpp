@@ -12,23 +12,38 @@ class Solution
 public:
     string longestCommonPrefix(vector<string>& strs) 
     { 
-        const string pivot = strs.back();
-        strs.pop_back();
-        if (!strs.size()) {return pivot;}
+        if (strs.empty()) return {};
+        const auto [min_it , max_it] = std::minmax_element(strs.begin(),strs.end());
+        std::string_view first = * min_it;
+        std::string_view last = * max_it;
+
+        const size_t limit = std::min(first.size(),last.size());
+        size_t idx = 0;
+        while (idx < limit && first[idx] == last[idx])
+        {
+            idx ++;
+        }
+        return std::string(first.substr(0,idx));
+
+
+        #if 0 
+        if (strs.empty()) return {};
+        string_view pivot = strs[0];
         for (size_t j = 0 ; j < pivot.size() ; j++)
         {
             for (const string & s: strs)
             {
-                if (pivot[j] != s[j]){return pivot.substr(0,j);}
+                if (pivot[j] != s[j]){return string(pivot.substr(0,j));}
             }
         }
-        return pivot ;
+        return string(pivot) ;
+        #endif 0
     }
 };
 
 int main() {
     Solution sol;
-    vector<string> test = {"jn","jn","jn","jn"};
+    vector<string> test = {"n","l"};
     cout << "Output: " << sol.longestCommonPrefix(test) << "\n";
 
     return 0;
