@@ -20,20 +20,15 @@ public:
         };
         return true;
     }
-
-    bool isPalindrome(string & s) 
+    bool isPalindrome(const string & s) 
     {
-        int l = 0;
+        int l = 0 ;
         int r = s.size()-1;
         while (l < r )
         {
-            while (notvalid(s[l]) && l < r) {++l;}
-            while (notvalid(s[r]) && l < r) {--r;}
-            char lc = s[l];
-            char rc = s[r];
-            if(lc >='A' && lc <='Z') lc +=32;
-            if(rc >='A' && rc <='Z') rc +=32;
-            if (lc != rc)
+            while ( l < r && notvalid(s[l])) {++l;}
+            while (l < r && notvalid(s[r]) ) {--r;}
+            if (tolower(s[l]) != tolower(s[r]))
             {
             return false;
             }
