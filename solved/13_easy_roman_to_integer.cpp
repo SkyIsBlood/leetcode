@@ -20,7 +20,6 @@ public:
         const int l = s.size();
         for (std::size_t i = 0 ; i < l;i++)
         {
-             
             //short current_number = dict[s[i]];//first way
             short current_number = value(s[i]); 
             //short next_number = (i+1<l)?(dict[s[i+1]]):(0);//first way
